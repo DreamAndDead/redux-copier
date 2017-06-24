@@ -1,0 +1,35 @@
+{
+  "name": "redux-copier",
+  "version": "0.0.1",
+  "description": "redux-copier makes redux module support multi-instance.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "babel copier.js -o index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DreamAndDead/redux-copier.git"
+  },
+  "keywords": [
+    "redux"
+  ],
+  "author": "DreamAndDead",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DreamAndDead/redux-copier/issues"
+  },
+  "homepage": "https://github.com/DreamAndDead/redux-copier#readme",
+  "dependencies": {
+    "invariant": "^2.2.2"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-jest": "^20.0.3",
+    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
+    "babel-preset-env": "^1.5.2",
+    "babel-preset-stage-2": "^6.24.1",
+    "jest": "^20.0.4",
+    "regenerator-runtime": "^0.10.5"
+  }
+}
