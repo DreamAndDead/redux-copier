@@ -7,19 +7,29 @@ import reducer, * as actionCreators from './ducks'
 import { copifyReducer, copifyActions } from './copier'
 
 let copifiedReducer = copifyReducer(reducer);
-let { actionCreators: firstActionCreators, selector: firstSelector} = copifyActions(actionCreators);
 
 const store = createStore(
   copifiedReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
+let { actionCreators: firstActionCreators, selector: firstSelector} = copifyActions(actionCreators);
+let { actionCreators: secondActionCreators, selector: secondSelector} = copifyActions(actionCreators);
+
 const render = () => ReactDOM.render(
-  <Counter
-    value={firstSelector(store.getState())}
-    onIncrement={() => store.dispatch( firstActionCreators.increase() )}
-    onDecrement={() => store.dispatch( firstActionCreators.decrease() )}
-  />,
+  <div>
+    <Counter
+      value={firstSelector(store.getState())}
+      onIncrement={() => store.dispatch( firstActionCreators.increase() )}
+      onDecrement={() => store.dispatch( firstActionCreators.decrease() )}
+    />
+    <Counter
+      value={secondSelector(store.getState())}
+      onIncrement={() => store.dispatch( secondActionCreators.increase() )}
+      onDecrement={() => store.dispatch( secondActionCreators.decrease() )}
+    />
+  </div>
+  ,
   document.getElementById('root')
 )
 

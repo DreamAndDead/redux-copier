@@ -1,9 +1,10 @@
 import { mapValues, cloneDeep } from 'lodash'
+import randomstring from 'randomstring'
 
 const DEFAULT_STATE_STORE_KEY = '@@DEFAULT_STATE'
 
 function generateKey() {
-  return Date.now().toString();
+  return randomstring.generate();
 }
 function copifyActions(actionCreators, customKey) {
   let key = generateKey();
