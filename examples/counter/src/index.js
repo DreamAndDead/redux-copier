@@ -4,12 +4,16 @@ import { createStore } from 'redux'
 import Counter from './components/Counter'
 import reducer, * as actionCreators from './ducks'
 
-import { copifyReducer, copifyActions } from '../../../copier'
+import { copifyReducer, copifyActions } from './copier'
 
 let copifiedReducer = copifyReducer(reducer);
 let { actionCreators: firstActionCreators, selector: firstSelector} = copifyActions(actionCreators);
 
-const store = createStore(copifiedReducer);
+const store = createStore(
+  copifiedReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
 const render = () => ReactDOM.render(
   <Counter
     value={firstSelector(store.getState())}
