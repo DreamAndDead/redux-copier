@@ -2,18 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { createStore } from 'redux'
 import Counter from './components/Counter'
-import counter from './reducers'
+import reducer, * as actionCreators from './ducks'
 
-const store = createStore(counter)
-const rootEl = document.getElementById('root')
+import { copifyReducer, copifyActions } from '../../../copier'
 
+let copifiedReducer = copifyReducer(reducer);
+let { actionCreators: firstActionCreators, selector: firstSelector} = copifyActions(actionCreators);
+
+const store = createStore(copifiedReducer);
 const render = () => ReactDOM.render(
   <Counter
-    value={store.getState()}
-    onIncrement={() => store.dispatch({ type: 'INCREMENT' })}
-    onDecrement={() => store.dispatch({ type: 'DECREMENT' })}
+    value={firstSelector(store.getState())}
+    onIncrement={() => store.dispatch( firstActionCreators.increase() )}
+    onDecrement={() => store.dispatch( firstActionCreators.decrease() )}
   />,
-  rootEl
+  document.getElementById('root')
 )
 
 render()

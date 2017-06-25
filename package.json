@@ -4,7 +4,7 @@
   "description": "redux-copier makes redux module support multi-instance.",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest copier.test.js",
     "build": "babel copier.js -o index.js"
   },
   "repository": {
@@ -21,7 +21,8 @@
   },
   "homepage": "https://github.com/DreamAndDead/redux-copier#readme",
   "dependencies": {
-    "invariant": "^2.2.2"
+    "invariant": "^2.2.2",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
