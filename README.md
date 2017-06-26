@@ -65,17 +65,6 @@ tree. They have the same behavior!** HOC Component is not reusable here.
 
 That's why we need redux-copier, making HOC Component reusable again.
 
-## example
-There are two examples copied from offical redux repo. A little modifications
-ensure them to work with redux-copier. Highly recommend you run example and
-check code.
-
-    git clone https://github.com/DreamAndDead/redux-copier
-    cd examples
-    cd counter (or todos)
-    npm i
-    npm start
-
 ## API
 
 **copifyActions**
@@ -119,7 +108,18 @@ return:
     npm install
     npm run test
 
-Highly recommend reading test script to see how to use redux-copier API
+**Highly recommend** reading test script to see how to use redux-copier API
+
+## example
+There are two examples copied from offical redux repo. A little modifications
+ensure them to work with redux-copier. **Highly recommend** you run example and
+check code.
+
+    git clone https://github.com/DreamAndDead/redux-copier
+    cd examples
+    cd counter (or todos)
+    npm i
+    npm start
 
 ## how it works
 
