@@ -1,14 +1,22 @@
 import React from 'react'
-import Footer from './Footer'
-import AddTodo from '../containers/AddTodo'
-import VisibleTodoList from '../containers/VisibleTodoList'
+import getFooter from './Footer'
+import getAddTodo from '../containers/AddTodo'
+import getTodoList from '../containers/TodoList'
 
-const App = () => (
-  <div>
-    <AddTodo />
-    <VisibleTodoList />
-    <Footer />
-  </div>
-)
+export default function getApp(key) {
+  const AddTodo = getAddTodo().component
+  const TodoList = getTodoList().component
+  const Footer = getFooter().component
 
-export default App
+  const App = () => (
+    <div>
+      <AddTodo />
+      <TodoList />
+      <Footer />
+    </div>
+  )
+
+  return {
+    component: App
+  }
+}

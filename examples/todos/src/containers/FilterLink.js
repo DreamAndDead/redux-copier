@@ -1,20 +1,27 @@
 import { connect } from 'react-redux'
-import { setVisibilityFilter } from '../actions'
+import { copifyReducer, copifyActions } from '../copier'
+import visReducer, * as visActions from '../ducks/visibility'
 import Link from '../components/Link'
 
-const mapStateToProps = (state, ownProps) => ({
-  active: ownProps.filter === state.visibilityFilter
-})
+export default function getFilterLink(key) {
+  const actions = copifyActions(visActions, key)
+  const selector = actions.selector
+  const setVisibilityFilter = actions.actionCreators.setVisibilityFilter
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  onClick: () => {
-    dispatch(setVisibilityFilter(ownProps.filter))
+  const mapStateToProps = (state, ownProps) => ({
+    active: ownProps.filter === selector(state.visibility)
+  })
+
+  const mapDispatchToProps = (dispatch, ownProps) => ({
+    onClick: () => {
+      dispatch(setVisibilityFilter(ownProps.filter))
+    }
+  })
+
+  return {
+    component: connect(mapStateToProps, mapDispatchToProps)(Link),
+    selector
   }
-})
+}
 
-const FilterLink = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Link)
-
-export default FilterLink
+export const reducer = copifyReducer(visReducer)
