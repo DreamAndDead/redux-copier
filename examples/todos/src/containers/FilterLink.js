@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { copifyReducer, copifyActions } from '../copier'
+import { copifyReducer, copifyActions } from 'redux-copier'
 import visReducer, * as visActions from '../ducks/visibility'
 import Link from '../components/Link'
 

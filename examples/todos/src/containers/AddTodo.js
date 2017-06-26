@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { copifyReducer, copifyActions } from '../copier'
+import { copifyReducer, copifyActions } from 'redux-copier'
 import todoReducer, * as todoActions from '../ducks/todos'
 
 export default function getAddTodo(key) {

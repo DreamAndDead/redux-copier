@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { copifyReducer, copifyActions } from '../copier'
+import { copifyReducer, copifyActions } from 'redux-copier'
 import todoReducer, * as todoActions from '../ducks/todos'
 import TodoList from '../components/TodoList'
 
