@@ -78,7 +78,87 @@ check code.
 
 ## API
 
+**copifyActions**
+
+```javascript
+function copifyActions(actionCreators, customKey) {
+  // ....
+  // ....
+  return {
+    actionCreators: newActionCreators,
+    selector: dataSelector
+  }
+}
+```
+param:
+- actionCreators: object, key is just a name, value must be an actionCreator.
+- customKey: string. if customKey is undefined, function will generate a random
+    key inside. see more in section how it works.
+
+return:
+- newActionCreators: object, same shape with param actionCreators.
+- dataSelector: function. see more in section how it works.
+
+**copifyReducer**
+
+```javascript
+function copifyReducer(reducer) {
+  // ...
+  // ...
+  return newReducer
+}
+```
+param:
+- reducer: reducer shape function.
+
+return:
+- newReducer: reducer shape function too.
+
+## test
+
+    npm install
+    npm run test
+
+Highly recommend reading test script to see how to use redux-copier API
+
 ## how it works
+
+A duck is made up with two part: data and interface to mutate data. Data is
+placed in redux store; interface is action, we dispatch action causing reducer
+to mutate data in store.
+
+Let's talk about an example.
+
+Assume `addTodo` is an action creator, reducer handle the action and add a
+new todo item in store data, `{ todos: [..., newItem] }`
+
+If we connect the duck with a component, component should retrive todos array as
+its data source and be able to trigger addTodo. Evething's fine except it'll
+make hoc doesn't work.
+
+Here's what redux-copier does.
+
+To action, every action is identified with a key. Same action creators connected
+with different hoc produce actions with different key.
+
+To reducer, reducer analyze actions it receives and update different data field
+marked by action key.
+
+To data, every key marks a field of data. `{ todos: [...] }` is more like
+```
+{
+  todos: {
+    k1: [...],
+    k2: [...],
+    ...
+  }
+}
+```
+
+**If you know my key, you know every thing**,
+customKey in API section is the key we describe.
+
+selector select data needed by key from `todos` object.
 
 ## LISENCE
 MIT
