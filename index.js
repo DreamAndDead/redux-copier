@@ -1,16 +1,16 @@
 (function (global, factory) {
   if (typeof define === "function" && define.amd) {
-    define(['exports', 'lodash', 'randomString'], factory);
+    define(['exports', 'lodash', 'randomstring'], factory);
   } else if (typeof exports !== "undefined") {
-    factory(exports, require('lodash'), require('randomString'));
+    factory(exports, require('lodash'), require('randomstring'));
   } else {
     var mod = {
       exports: {}
     };
-    factory(mod.exports, global.lodash, global.randomString);
+    factory(mod.exports, global.lodash, global.randomstring);
     global.copier = mod.exports;
   }
-})(this, function (exports, _lodash, _randomString) {
+})(this, function (exports, _lodash, _randomstring) {
   'use strict';
 
   Object.defineProperty(exports, "__esModule", {
@@ -18,7 +18,7 @@
   });
   exports.copifyReducer = exports.copifyActions = undefined;
 
-  var _randomString2 = _interopRequireDefault(_randomString);
+  var _randomstring2 = _interopRequireDefault(_randomstring);
 
   function _interopRequireDefault(obj) {
     return obj && obj.__esModule ? obj : {
@@ -58,7 +58,7 @@
   var DEFAULT_STATE_STORE_KEY = '@@DEFAULT_STATE';
 
   function generateKey() {
-    return _randomString2.default.generate();
+    return _randomstring2.default.generate();
   }
   function copifyActions(actionCreators, customKey) {
     var key = generateKey();

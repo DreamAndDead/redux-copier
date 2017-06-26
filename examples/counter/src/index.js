@@ -4,7 +4,7 @@ import { createStore } from 'redux'
 import Counter from './components/Counter'
 import reducer, * as actionCreators from './ducks'
 
-import { copifyReducer, copifyActions } from './copier'
+import { copifyReducer, copifyActions } from 'redux-copier'
 
 let copifiedReducer = copifyReducer(reducer);
 
