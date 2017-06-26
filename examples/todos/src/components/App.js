@@ -4,9 +4,9 @@ import getAddTodo from '../containers/AddTodo'
 import getTodoList from '../containers/TodoList'
 
 export default function getApp(key) {
-  const AddTodo = getAddTodo().component
-  const TodoList = getTodoList().component
-  const Footer = getFooter().component
+  const AddTodo = getAddTodo(key)
+  const TodoList = getTodoList(key)
+  const Footer = getFooter(key)
 
   const App = () => (
     <div>
@@ -16,7 +16,5 @@ export default function getApp(key) {
     </div>
   )
 
-  return {
-    component: App
-  }
+  return App
 }

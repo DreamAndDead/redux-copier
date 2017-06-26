@@ -16,10 +16,14 @@ const store = createStore(
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const App = getApp().component
+const App = getApp('main')
+const AnotherApp = getApp('dup')
 render(
   <Provider store={store}>
-    <App />
+    <div>
+      <App />
+      <AnotherApp />
+    </div>
   </Provider>,
   document.getElementById('root')
 )

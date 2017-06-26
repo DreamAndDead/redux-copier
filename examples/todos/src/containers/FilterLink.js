@@ -18,10 +18,7 @@ export default function getFilterLink(key) {
     }
   })
 
-  return {
-    component: connect(mapStateToProps, mapDispatchToProps)(Link),
-    selector
-  }
+  return connect(mapStateToProps, mapDispatchToProps)(Link)
 }
 
 export const reducer = copifyReducer(visReducer)

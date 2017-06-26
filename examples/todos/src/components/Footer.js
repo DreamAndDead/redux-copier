@@ -2,7 +2,7 @@ import React from 'react'
 import getFilterLink from '../containers/FilterLink'
 
 export default function getFooter(key) {
-  const FilterLink = getFilterLink(key).component
+  const FilterLink = getFilterLink(key)
 
   const Footer = () => (
     <p>
@@ -22,7 +22,5 @@ export default function getFooter(key) {
     </p>
   )
 
-  return {
-    component: Footer
-  }
+  return Footer
 }

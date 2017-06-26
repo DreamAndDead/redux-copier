@@ -5,7 +5,6 @@ import todoReducer, * as todoActions from '../ducks/todos'
 
 export default function getAddTodo(key) {
   const actions = copifyActions(todoActions, key)
-  const selector = actions.selector
   const addTodo = actions.actionCreators.addTodo
 
   let AddTodo = ({ dispatch }) => {
@@ -32,10 +31,7 @@ export default function getAddTodo(key) {
     )
   }
 
-  return {
-    component: connect()(AddTodo),
-    selector
-  }
+  return connect()(AddTodo)
 }
 
 export const reducer = copifyReducer(todoReducer)

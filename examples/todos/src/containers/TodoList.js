@@ -29,10 +29,7 @@ export default function getTodoList(key) {
     onTodoClick: toggleTodo
   }
 
-  return {
-    component: connect(mapStateToProps, mapDispatchToProps)(TodoList),
-    selector
-  }
+  return connect(mapStateToProps, mapDispatchToProps)(TodoList)
 }
 
 export const reducer = copifyReducer(todoReducer)
